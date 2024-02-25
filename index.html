@@ -3,8 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>Hoang Minh Tuan – E21CQCN01-B</title>
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="robots" content="max-image-preview:large" /> -->
         <style>
             label {
                 margin-bottom: 8px; 
@@ -13,8 +11,6 @@
     </head>
     <body>
         <h1>Quản lý sinh viên</h1>
-        <label for="quantity">Số sinh viên:</label> 
-        <input type="number" id="quantity" min="1"> 
         <button onclick="createStudentList()">Tạo danh sách sinh viên</button>
         <button onclick="displayStudentList()">Hiển thị thông tin sinh viên</button> 
         <h1>Danh sách sinh viên</h1>
@@ -23,13 +19,11 @@
         </div>
         <script>
             let studentList = [];
-
+            let numStudents;
             function createStudentList() {
-                const quantity = document.getElementById('quantity').value;
-
-                for (let i = 0; i < quantity; i++) {
+                numStudents = prompt("Enter quantity of student")
+                for (let i = 0; i < numStudents; i++) {
                     let student;
-
                     do {
                         student = {
                             maSV: promptWithCheck(`Student ID ${i + 1}`, checkDuplicate),
@@ -71,7 +65,7 @@
 
                 studentList.forEach(student => {
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${student.maSV} - ${student.hoTen} -${student.ngaySinh} - ${student.lopHoc} - ${student.diemGPA}`;
+                    listItem.textContent = `${student.maSV} - ${student.hoTen} - ${student.ngaySinh} - ${student.lopHoc} - ${student.diemGPA}`;
                     listContainer.appendChild(listItem);
                 });
             }
